@@ -4,6 +4,8 @@ import '../styles/signature.css';
 
 const Signature = () => {
     const [sign, setSign] = useState(null);
+    const [color, setColor] = useState('black');
+    const colors = ['black', 'red', 'green', 'blue', 'yellow', 'purple', 'orange', 'pink', 'brown', 'grey'];
 
 
     function adjustSizes() {
@@ -26,8 +28,6 @@ const Signature = () => {
         }
     }
 
-    // Save the signature
-
     function saveSignature() {
         if (sign.isEmpty()) {
             alert("Please provide a signature first.");
@@ -38,11 +38,9 @@ const Signature = () => {
         }
     }
 
-
     function newCanvas() {
         sign.clear();
     }
-    
 
     useEffect(() => {
         adjustSizes();
@@ -57,16 +55,26 @@ const Signature = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h1>Signature Pad</h1>
-            <div style={{ border: "2px solid black", width: "30%", display: 'flex', justifyContent: 'center' }} className='divcanvas'>
+            <div style={{ border: "2px solid black", width: "35%", display: 'flex', justifyContent: 'center' }} className='divcanvas'>
                 <SignaturePad
-                    canvasProps={{ width: 400, height: 200, className: 'sigCanvas' }}
+                    penColor={color}
+                    canvasProps={{ width: 470, height: 200, className: 'sigCanvas' }}
                     ref={(data) => setSign(data)}
                 />
             </div>
             <br />
-            <button onClick={() => { sign.clear() }}> Clear </button>
-            <button onClick = {saveSignature} >Click to Save your sign</button>
-            <button onClick = {newCanvas}>New canvas</button>
+            <div style={{display: 'flex', gap: 20, border: '2px solid grey', padding: '3px'}}>
+                <select onChange={(e) => setColor(e.target.value)} value={color}>
+                    {colors.map((color, index) => (
+                        <option key={index} value={color}>
+                            {color}
+                        </option>
+                    ))}
+                </select>
+                <button onClick={() => { sign.clear() }}> Clear </button>
+                <button onClick={saveSignature} >Click to Save your sign</button>
+                <button onClick={newCanvas}>New canvas</button>
+            </div>
         </div>
     );
 };
