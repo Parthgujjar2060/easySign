@@ -5,7 +5,6 @@ import '../styles/signature.css';
 const Signature = () => {
     const [sign, setSign] = useState(null);
 
-    // Adjustment of the canvas size 
 
     function adjustSizes() {
         const canvas = document.querySelector(".sigCanvas canvas");
@@ -39,7 +38,6 @@ const Signature = () => {
         }
     }
 
-    // New signature canvas
 
     function newCanvas() {
         sign.clear();
