@@ -1,6 +1,72 @@
-.sigCanvas{
+img{
+    width: 300px;
+}
+.sigCanvas {
     border: 1px solid;
-    margin: 0 auto;
+    margin: 20px auto 0px auto;
     display: block;
     background-color: #fff;
+    border-radius: 5px;
 }
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divcanvas {
+    border: 1px solid black;
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(212, 212, 212);
+    margin-bottom: 50px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.btn-container {
+    display: flex;
+    /* gap: 5px; */
+    padding: 3px 100px;
+    margin-top: 20px;
+}
+
+select {
+    margin: 10px auto;
+    border-radius: 5px;
+    background-color: rgb(40, 44, 52);
+    color: white;
+    border: none;
+    padding: 10px 2px;
+}
+
+select:hover {
+    border: 1px solid rgb(40, 44, 52);
+    color: rgb(40, 44, 52);
+    background-color: transparent;
+    transition: .5s ease-in-out;
+}
+
+button {
+    border: 1px solid rgb(40, 44, 52);
+    background-color: rgb(40, 44, 52);
+    border-radius: 5px;
+    padding: 10px 12px;
+    margin: 10px auto;
+    color: white;
+}
+
+button:hover {
+    border: 1px solid rgb(40, 44, 52);
+    color: rgb(40, 44, 52);
+    background-color: transparent;
+    transition: .5s ease-in-out;
+}
+
+i {
+    padding-left: 5px;
+}
+

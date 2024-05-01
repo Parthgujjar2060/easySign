@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import sign from './assets/sign.gif'
 
 function App() {
   const [opacity, setOpacity] = useState(0);
@@ -41,6 +42,7 @@ function App() {
     <div className="App" style={appStyle}>
       <h1 style={h1Style}>Do sign easily</h1>
       <h3 style={h3Style}>Try out your signature here</h3>
+      <img src={sign} alt='sign'/>
     </div>
   );
 }
