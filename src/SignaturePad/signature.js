@@ -5,7 +5,7 @@ import '../styles/signature.css';
 const Signature = () => {
     const [sign, setSign] = useState(null);
     const [color, setColor] = useState('black');
-    const colors = ['black', 'red', 'green', 'blue', 'yellow', 'purple', 'orange', 'pink', 'brown', 'grey'];
+    const colors = ['Black', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Grey'];
 
 
     function adjustSizes() {
@@ -53,28 +53,31 @@ const Signature = () => {
     }, []);
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h1>Signature Pad</h1>
-            <div style={{ border: "2px solid black", width: "35%", display: 'flex', justifyContent: 'center' }} className='divcanvas'>
+        <div className='main-container'>
+            <h1>Signature Pad <i class="fa-solid fa-signature"></i><i class="fa-solid fa-pencil"></i></h1>
+            <div className='divcanvas'>
                 <SignaturePad
                     penColor={color}
-                    canvasProps={{ width: 470, height: 200, className: 'sigCanvas' }}
+                    canvasProps={{ width: 650, height: 250, className: 'sigCanvas' }}
                     ref={(data) => setSign(data)}
                 />
+
+                <div className='btn-container'>
+                    <select onChange={(e) => setColor(e.target.value)} value={color}>
+                        {colors.map((color, index) => (
+                            <option key={index} value={color}>
+                                {color}
+                            </option>
+                        ))}
+                    </select>
+
+                    <button onClick={() => { sign.clear() }}> Clear <i class="fa-solid fa-trash"></i></button>
+                    <button onClick={saveSignature} > Save <i class="fa-solid fa-download"></i></button>
+                    <button onClick={newCanvas}> New canvas <i class="fa-solid fa-pencil"></i></button>
+                </div>
             </div>
             <br />
-            <div style={{display: 'flex', gap: 20, border: '2px solid grey', padding: '3px'}}>
-                <select onChange={(e) => setColor(e.target.value)} value={color}>
-                    {colors.map((color, index) => (
-                        <option key={index} value={color}>
-                            {color}
-                        </option>
-                    ))}
-                </select>
-                <button onClick={() => { sign.clear() }}> Clear </button>
-                <button onClick={saveSignature} >Click to Save your sign</button>
-                <button onClick={newCanvas}>New canvas</button>
-            </div>
+
         </div>
     );
 };
