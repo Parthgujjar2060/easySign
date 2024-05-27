@@ -33,7 +33,6 @@ img{
 
 .btn-container {
     display: flex;
-    /* gap: 5px; */
     padding: 3px 100px;
     margin-top: 20px;
 }
