@@ -1,3 +1,7 @@
+body{
+    margin : 0 auto;
+}
+
 img{
     width: 300px;
 }
@@ -70,3 +74,16 @@ i {
     padding-left: 5px;
 }
 
+@media (max-width: 768px) {
+    .divcanvas {
+        margin-right: auto;
+        margin-left: auto;
+        width: 80%;
+    }
+
+    .sigCanvas{
+        width: 100%;
+    }
+    
+
+  }
