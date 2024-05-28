@@ -20,6 +20,7 @@ img{
 }
 
 .divcanvas {
+    
     border: 1px solid black;
     width: 35%;
     display: flex;
