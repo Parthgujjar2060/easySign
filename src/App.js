@@ -29,7 +29,6 @@ function App() {
     fontSize: "1.5em",
     opacity: opacity,
     transition: 'opacity 1s ease-in-out',
-    
     marginBottom: "10px",
   };
 
