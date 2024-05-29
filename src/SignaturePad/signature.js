@@ -23,7 +23,6 @@ const Signature = () => {
         }
 
         if (div && divContainer) {
-            
             const ratio = Math.max(window.devicePixelRatio || 1, 1);
             div.style.width = divContainer.offsetWidth * ratio + "px";
         }
