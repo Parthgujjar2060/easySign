@@ -37,6 +37,7 @@ function App() {
     opacity: opacity,
     transition: 'opacity 1s ease-in-out',
   };
+  
 
   return (
     <div className="App" style={appStyle}>
