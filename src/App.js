@@ -38,7 +38,6 @@ function App() {
     transition: 'opacity 1s ease-in-out',
   };
   
-
   return (
     <div className="App" style={appStyle}>
       <h1 style={h1Style}>Do sign easily</h1>
