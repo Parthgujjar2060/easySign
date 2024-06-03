@@ -21,7 +21,6 @@ const Signature = () => {
             canvas.height = canvasContainer.offsetHeight * ratio;
             canvas.getContext("2d").scale(ratio, ratio);
         }
-        
 
         if (div && divContainer) {
             const ratio = Math.max(window.devicePixelRatio || 1, 1);
