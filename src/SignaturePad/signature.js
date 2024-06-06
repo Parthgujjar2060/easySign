@@ -5,13 +5,13 @@ import '../styles/signature.css';
 const Signature = () => {
     const [sign, setSign] = useState(null);
     const [color, setColor] = useState('black');
+    const [documentType, setDocumentType] = useState('jpg');
     const colors = ['Black', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Grey'];
-
+    const documentForm = ['jpg', 'pdf', 'svg']
 
     function adjustSizes() {
         const canvas = document.querySelector(".sigCanvas canvas");
         const canvasContainer = document.querySelector(".sigCanvas");
-
         const div = document.querySelector(".divcanvas");
         const divContainer = document.querySelector(".divcanvas");
 
@@ -70,11 +70,19 @@ const Signature = () => {
                             </option>
                         ))}
                     </select>
+                    <select onChange={(e) => setDocumentType(e.target.value)} value={documentType}>
+                        {documentForm.map((document, index) => (
+                            <option key={index} value={document}>
+                                {document}
+                            </option>
+                        ))}
+                    </select>
 
                     <button onClick={() => { sign.clear() }}> Clear <i class="fa-solid fa-trash"></i></button>
                     <button onClick={saveSignature} > Save <i class="fa-solid fa-download"></i></button>
                     <button onClick={newCanvas}> New canvas <i class="fa-solid fa-pencil"></i></button>
                 </div>
+
             </div>
             <br />
 
