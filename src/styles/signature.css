@@ -1,66 +1,60 @@
-body{
-    margin : 0 auto;
+body {
+    margin: 0;
 }
 
-img{
+img {
     width: 300px;
 }
+
 .sigCanvas {
     border: 1px solid;
-    margin: 20px auto 0px auto;
     display: block;
     background-color: #fff;
     border-radius: 5px;
+    width: 100%;
+    height: 100%;
 }
+
 .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .divcanvas {
+    
     border: 1px solid black;
-    width: 35%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     background-color: rgb(59, 59, 59);
-    margin-bottom: 50px;
+    margin: 20px auto 50px auto;
     padding: 15px;
     border-radius: 5px;
+    width: fit-content;
+    max-width: 70%;
+    height: auto9;
 }
 
 .btn-container {
     display: flex;
-    padding: 3px 100px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     margin-top: 20px;
 }
 
-select {
-    margin: 10px auto;
+select, button {
+    margin: 10px;
     border-radius: 5px;
     background-color: rgb(40, 44, 52);
     color: white;
     border: none;
-    padding: 10px 2px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
-select:hover {
-    border: 1px solid rgb(40, 44, 52);
-    color: rgb(40, 44, 52);
-    background-color: transparent;
-    transition: .5s ease-in-out;
-}
-
-button {
-    border: 1px solid rgb(40, 44, 52);
-    background-color: rgb(40, 44, 52);
-    border-radius: 5px;
-    padding: 10px 12px;
-    margin: 10px auto;
-    color: white;
-}
-
-button:hover {
+select:hover, button:hover {
     border: 1px solid rgb(40, 44, 52);
     color: rgb(40, 44, 52);
     background-color: transparent;
@@ -73,14 +67,6 @@ i {
 
 @media (max-width: 768px) {
     .divcanvas {
-        margin-right: auto;
-        margin-left: auto;
-        width: 80%;
+        width: 90%;
     }
-
-    .sigCanvas{
-        width: 100%;
-    }
-    
-
-  }
+}
