@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SignaturePad from 'react-signature-canvas';
 import '../styles/signature.css';
 
@@ -6,14 +6,13 @@ const Signature = () => {
     const [sign, setSign] = useState(null);
     const [color, setColor] = useState('black');
     const [documentType, setDocumentType] = useState('jpg');
+    const canvasRef = useRef(null);
     const colors = ['Black', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Grey'];
-    const documentForm = ['jpg', 'pdf', 'svg']
+    const documentForm = ['jpg', 'pdf', 'svg'];
 
-    function adjustSizes() {
-        const canvas = document.querySelector(".sigCanvas canvas");
-        const canvasContainer = document.querySelector(".sigCanvas");
-        const div = document.querySelector(".divcanvas");
-        const divContainer = document.querySelector(".divcanvas");
+    const adjustSizes = () => {
+        const canvas = canvasRef.current.querySelector("canvas");
+        const canvasContainer = canvasRef.current;
 
         if (canvas && canvasContainer) {
             const ratio = Math.max(window.devicePixelRatio || 1, 1);
@@ -21,14 +20,9 @@ const Signature = () => {
             canvas.height = canvasContainer.offsetHeight * ratio;
             canvas.getContext("2d").scale(ratio, ratio);
         }
+    };
 
-        if (div && divContainer) {
-            const ratio = Math.max(window.devicePixelRatio || 1, 1);
-            div.style.width = divContainer.offsetWidth * ratio + "px";
-        }
-    }
-
-    function saveSignature() {
+    const saveSignature = () => {
         if (sign.isEmpty()) {
             alert("Please provide a signature first.");
         } else {
@@ -36,11 +30,11 @@ const Signature = () => {
             console.log(data);
             alert("Signature saved successfully.");
         }
-    }
+    };
 
-    function newCanvas() {
+    const newCanvas = () => {
         sign.clear();
-    }
+    };
 
     useEffect(() => {
         adjustSizes();
@@ -54,14 +48,13 @@ const Signature = () => {
 
     return (
         <div className='main-container'>
-            <h1>Signature Pad <i class="fa-solid fa-signature"></i><i class="fa-solid fa-pencil"></i></h1>
-            <div className='divcanvas'>
+            <h1>Signature Pad <i className="fa-solid fa-signature"></i><i className="fa-solid fa-pencil"></i></h1>
+            <div className='divcanvas' ref={canvasRef}>
                 <SignaturePad
                     penColor={color}
-                    canvasProps={{ width: 650, height: 250, className: 'sigCanvas' }}
+                    canvasProps={{ className: 'sigCanvas' }}
                     ref={(data) => setSign(data)}
                 />
-
                 <div className='btn-container'>
                     <select onChange={(e) => setColor(e.target.value)} value={color}>
                         {colors.map((color, index) => (
@@ -77,15 +70,11 @@ const Signature = () => {
                             </option>
                         ))}
                     </select>
-
-                    <button onClick={() => { sign.clear() }}> Clear <i class="fa-solid fa-trash"></i></button>
-                    <button onClick={saveSignature} > Save <i class="fa-solid fa-download"></i></button>
-                    <button onClick={newCanvas}> New canvas <i class="fa-solid fa-pencil"></i></button>
+                    <button onClick={() => { sign.clear() }}>Clear <i className="fa-solid fa-trash"></i></button>
+                    <button onClick={saveSignature}>Save <i className="fa-solid fa-download"></i></button>
+                    <button onClick={newCanvas}>New Canvas <i className="fa-solid fa-pencil"></i></button>
                 </div>
-
             </div>
-            <br />
-
         </div>
     );
 };
