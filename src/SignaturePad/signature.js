@@ -22,6 +22,19 @@ const Signature = () => {
         }
     };
 
+    const jpgFunction = () => {
+        const data = sign.toDataURL("image/jpeg");
+        console.log(data);
+    };
+    const pdfFunction = () => {
+        const data = sign.toDataURL("image/pdf");
+        console.log(data);
+    }
+    const svgFunction = () => {
+        const data = sign.toDataURL("image/svg+xml");
+        console.log(data);
+    }
+
     const saveSignature = () => {
         if (sign.isEmpty()) {
             alert("Please provide a signature first.");
