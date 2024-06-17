@@ -22,25 +22,34 @@ const Signature = () => {
         }
     };
 
-    const jpgFunction = () => {
-        const data = sign.toDataURL("image/jpeg");
-        console.log(data);
+    const getDataUrl = () => {
+        switch (documentType) {
+            case 'jpg':
+                return sign.toDataURL("image/jpeg");
+            case 'pdf':
+                return sign.toDataURL("application/pdf");
+            case 'svg':
+                return sign.toDataURL("image/svg+xml");
+            default:
+                return sign.toDataURL("image/jpeg");
+        }
     };
-    const pdfFunction = () => {
-        const data = sign.toDataURL("image/pdf");
-        console.log(data);
-    }
-    const svgFunction = () => {
-        const data = sign.toDataURL("image/svg+xml");
-        console.log(data);
-    }
+
+    const downloadSignature = (dataUrl, fileName) => {
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     const saveSignature = () => {
         if (sign.isEmpty()) {
             alert("Please provide a signature first.");
         } else {
-            const data = sign.toDataURL();
-            console.log(data);
+            const dataUrl = getDataUrl();
+            downloadSignature(dataUrl, `signature.${documentType}`);
             alert("Signature saved successfully.");
         }
     };
@@ -71,7 +80,7 @@ const Signature = () => {
                 <div className='btn-container'>
                     <select onChange={(e) => setColor(e.target.value)} value={color}>
                         {colors.map((color, index) => (
-                            <option key={index} value={color}>
+                            <option key={index} value={color.toLowerCase()}>
                                 {color}
                             </option>
                         ))}
